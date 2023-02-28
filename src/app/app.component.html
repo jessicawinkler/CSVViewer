@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="title">{{ title }}</div>
+  <table>
+    <thead>
+      <th *ngFor="let header of tableHeaders">
+        {{ header }}
+      </th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of pagedData">
+        <td *ngFor="let column of row">{{ column }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="page-info">Page {{ currentPage }} of {{ pageCount }}</div>
+  <div class="actions">
+    <button (click)="showFirstPage()">First Page</button>
+    <button (click)="showPreviousPage()">Previous Page</button>
+    <button (click)="showNextPage()">Next Page</button>
+    <button (click)="showLastPage()">Last Page</button>
+  </div>
+  <div class="page-input">
+    <input type="text" [(ngModel)]="pageInput" (change)="changePage()" />
+    <div *ngIf="!isValidPage(pageInput)">Page is not valid</div>
+  </div>
+</div>
